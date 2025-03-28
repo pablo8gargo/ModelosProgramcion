@@ -1,0 +1,29 @@
+@startuml UMLHarryPotter
+package wizard{
+    abstract class  Wizard{
+        -SpellBehavior
+        +performSpell()
+    }
+    class HarryPotter extends Wizard{
+    }
+    class HermioneGranger extends Wizard{
+    }
+    class RonWeasley extends Wizard{
+    }
+}
+package spellBehavior{
+    interface SpellBehavior{
+        +spell()
+    }
+    class Expelliarmus implements SpellBehavior{
+    }
+    class OculusReparo implements SpellBehavior{
+    }
+    class WingardiumLeviosa implements SpellBehavior{
+    }
+    class ExpectoPatronum implements SpellBehavior{
+    }
+}
+Wizard o--  SpellBehavior
+skinparam linetype ortho
+@enduml

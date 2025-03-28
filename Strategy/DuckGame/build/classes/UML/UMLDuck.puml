@@ -1,0 +1,42 @@
+@startuml UMLDuck
+package duck{
+    abstract class  Duck{
+        flyBehavior: FlyBehavior
+        quackBehavior: QuackBehavior
+        +display()
+
+    }
+    class MallardDuck extends Duck{
+    }
+    class RedheadDuck extends Duck{
+    }
+    class RubberDuck extends Duck{
+    }
+}
+package flyBehavior{
+    interface FlyBehavior{
+        +fly()
+    }
+    class FlyWithWings implements FlyBehavior{
+    }
+    class FlyNoWay implements FlyBehavior{
+    }
+    class FlyRocketPowered implements FlyBehavior{
+    }
+}
+package quackBehavior{
+    interface QuackBehavior{
+        +quack()
+    }
+    class Quack implements QuackBehavior{
+    }
+    class Squeak implements QuackBehavior{
+    }
+    class MuteQuack implements QuackBehavior{
+    }
+}  
+Duck o--  FlyBehavior
+Duck o--  QuackBehavior
+skinparam linetype ortho
+
+@enduml
