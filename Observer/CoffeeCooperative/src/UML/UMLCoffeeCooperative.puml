@@ -1,0 +1,35 @@
+@startuml UMLCoffeeCooperative
+package subject{
+    interface Subject{
+        +registerObserver()
+        +removeObserver()
+        +notifyObservers()
+    }
+    class CoffeeCooperative implements Subject{
+        +getHeight()
+        +getPounds()
+        +getNotesCata()
+        +getOrigin()
+        +getProductorName()
+        +getVarietal()
+        +registerNewBach()
+    }
+    
+}
+
+package observer{
+    interface Observer{
+        +update()
+    }
+    interface DisplayElement{
+        +display()
+    }
+
+    class  Barista implements Observer,DisplayElement{
+    }
+}
+Subject "1" o-- "0..*" Observer
+
+
+skinparam linetype ortho
+@enduml
