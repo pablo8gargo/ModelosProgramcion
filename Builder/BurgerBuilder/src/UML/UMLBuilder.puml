@@ -1,0 +1,51 @@
+@startuml
+package Builder{
+' Clases principales
+class Chef {
+    - burguerBuilder : BurguerBuilder
+    + setBurguerBuilder(builder : BurguerBuilder)
+    + BurguerBuilder() : Burguer
+}
+
+interface BurguerBuilder {
+    + buildBread()
+    + buildMeat()
+    + buildCheese()
+    + buildToppings()
+    + getBurguer() : Burguer
+}
+
+class TodoTerrenoBurguerBuilder {
+    - burguer : Burguer
+    + buildBread()
+    + buildMeat()
+    + buildCheese()
+    + buildToppings()
+    + getBurguer() : Burguer
+}
+
+class Burguer {
+    - name : String
+    - meat : Meat
+    - bread : Bread
+    - cheese : Cheese
+    - toppings : ArrayList<Topping>
+    + setName(name : String)
+    + setMeat(meat : Meat)
+    + setBread(bread : Bread)
+    + setCheese(cheese : Cheese)
+    + addTopping(topping : Topping)
+    + toString() : String
+}
+
+' Relaciones
+Chef o-- BurguerBuilder
+BurguerBuilder <|-- TodoTerrenoBurguerBuilder : implements
+TodoTerrenoBurguerBuilder --> Burguer : creates
+Burguer o-- Meat
+Burguer o-- Bread
+Burguer o-- Cheese
+Burguer o-- Topping
+skinparam linetype ortho
+}
+@enduml

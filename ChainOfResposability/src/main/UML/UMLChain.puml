@@ -1,0 +1,44 @@
+@startuml
+interface Handler {
+    +setNextHandler(nextHandler: Handler)
+    +handle(amount: int)
+}
+
+class CoinFiveHundred {
+    -nextHandler: Handler
+    +setNextHandler(nextHandler: Handler)
+    +handle(amount: int)
+}
+
+class CoinTwoHundred {
+    -nextHandler: Handler
+    +setNextHandler(nextHandler: Handler)
+    +handle(amount: int)
+}
+
+class CoinOneHundred {
+    -nextHandler: Handler
+    +setNextHandler(nextHandler: Handler)
+    +handle(amount: int)
+}
+
+class CoinFifty {
+    -nextHandler: Handler
+    +setNextHandler(nextHandler: Handler)
+    +handle(amount: int)
+}
+
+class Main {
+    +main(args: String[]): void
+}
+
+Handler <|.. CoinFiveHundred
+Handler <|.. CoinTwoHundred
+Handler <|.. CoinOneHundred
+Handler <|.. CoinFifty
+
+Main --> Handler : uses
+Handler --o Handler 
+skinparam linetype ortho
+
+@enduml
