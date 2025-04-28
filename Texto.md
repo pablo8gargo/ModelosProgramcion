@@ -67,5 +67,22 @@ Se usa cuando queremos **pasar una solicitud por una cadena de objetos** hasta q
 
 ## Flyweight
 
-**(1 UML)**
+Se usa cuando queremos **compartir objetos para ahorrar memoria**. Es un **patrón estructural** que posee:
+
+- **Client** (`Forest`): es quien solicita objetos (`TreeType`) reutilizables en lugar de crearlos desde cero.  
+  El `Forest` planta muchos `Tree`, pero en lugar de crear toda la información (nombre, color, texturas) para cada uno, pide que se reutilice con ayuda del `TreeFactory`.
+
+- **FlyweightFactory** (`TreeFactory`): administra y devuelve los objetos compartidos (`TreeType`).  
+  Tiene una **cache** (`Map<String, TreeType>`) para guardar los tipos de árboles ya creados y no repetirlos.
+
+- **Flyweight** (`TreeType`): representa el **estado que puede ser compartido** (nombre, textura de hoja, textura de corteza y color).  
+  Cada `TreeType` guarda información común entre varios árboles, mientras que la posición `(x, y)` es externa y única de cada `Tree`.
+
+- **Objeto Extrínseco** (`Tree`): combina la **parte compartida** (`TreeType`) con **datos propios** (posición `x`, `y`).  
+  Los `Tree` no replican toda la información; simplemente usan la instancia compartida de `TreeType`.
+
+---
+![Diagrama de Flyweight](https://imgur.com/yVfQsK1.png)
+![Diagrama general de Flyweight](https://imgur.com/U9PkODE.png)
+
 
