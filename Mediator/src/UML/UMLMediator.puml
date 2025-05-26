@@ -1,0 +1,49 @@
+@startuml UMLMediator
+
+package "auction.interfaces" {
+    interface Mediator {
+        +notifyOffer()
+        +notifyMinOffer()
+        +notifySell()
+    }
+
+    abstract class Collegue {
+        -mediator: Mediator
+        +Collegue(Mediator mediator)
+    }
+}
+
+package "auction.components" {
+    class Bidder {
+        -id: int
+        -offer: int
+        +makeOffer(offer: int)
+        +getId(): int
+        +getOffer(): int
+    }
+
+    class Item {
+        -name: String
+        -price: int
+        +getName(): String
+        +getPrice(): int
+        +setPrice(price: int)
+    }
+}
+
+package "auction" {
+    class AuctioneerMediator {
+        -item: Item
+        -bidders: List<Bidder>
+    }
+}
+
+
+Collegue <|-- Bidder
+Collegue <|-- Item
+Mediator <|.. AuctioneerMediator
+AuctioneerMediator --> Bidder
+AuctioneerMediator --> Item
+skinparam linetype ortho
+
+@enduml

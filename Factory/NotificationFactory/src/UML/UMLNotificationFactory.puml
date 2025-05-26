@@ -1,0 +1,32 @@
+@startuml UMLNotificationFactory
+
+package notificationFactory {
+
+    interface NotificationType {
+        +send(String)
+    }
+
+    class EmailNotification implements NotificationType {
+    }
+
+    class SMSNotification implements NotificationType {
+    }
+
+    class WhatsAppNotification implements NotificationType {
+    }
+
+    class NotificationFactory {
+        +createNotification(String):
+    }
+
+    class NotificationService {
+        -factory: NotificationFactory
+        +orderNotification(String):
+    }
+
+    NotificationFactory --> NotificationType
+    NotificationService --> NotificationFactory
+
+}
+
+@enduml

@@ -1,0 +1,66 @@
+@startuml UMLDecorator
+package kia {
+    abstract class Car {
+        - description 
+        + getDescription()
+        + cost()
+    }
+
+    abstract class AccessoryDecorator extends Car {
+        + getDescription()
+    }
+}
+
+package "kia.cars" {
+    class VibrantMT {
+        + cost()
+    }
+
+    class ZenithAT {
+        + cost()
+    }
+
+    class ZenithMT {
+        + cost()
+    }
+
+    class GTLine {
+        + cost()
+    }
+
+    VibrantMT --|> Car
+    ZenithAT --|> Car
+    ZenithMT --|> Car
+    GTLine --|> Car
+}
+
+package "kia.accessories" {
+    class AluminumRim {
+        + cost()
+        + getDescription()
+    }
+
+    class BicycleRack {
+        + cost()
+        + getDescription()
+    }
+
+    class ThreePieceCarpet {
+        + cost()
+        + getDescription()
+    }
+
+    class SafetyBolt {
+        + cost()
+        + getDescription()
+    }
+
+    AluminumRim --|> AccessoryDecorator
+    BicycleRack --|> AccessoryDecorator
+    ThreePieceCarpet --|> AccessoryDecorator
+    SafetyBolt --|> AccessoryDecorator
+    skinparam linetype ortho
+}
+
+kia.AccessoryDecorator --|> kia.Car
+@enduml
