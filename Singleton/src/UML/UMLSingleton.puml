@@ -1,0 +1,18 @@
+@startuml UMLSingleton
+class BoilerSingleton {
+    - resistencia
+    - vacio
+    - BoilerSingleton: instance
+
+    + getInstace(): instace
+    +llenar()
+    +mezclar()
+    +vaciar()
+
+}
+
+BoilerSingleton --> BoilerSingleton
+skinparam linetype ortho
+
+
+@enduml
